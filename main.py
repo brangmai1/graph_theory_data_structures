@@ -1,5 +1,8 @@
 # Brang Mai
 from pprint import pprint
+import numpy as np
+#from adjacency_lists import AdjacencyLists
+#from adjacency_matrix import AdjacencyMatrix
 
 
 def adjacency_list(*args):
@@ -34,6 +37,7 @@ def left_direction(adj_list, pair):
 def nodes_total(*args):
     set_of_nodes = set()
     for edge_pair in args:
+        set_of_nodes.add(edge_pair[0])
         set_of_nodes.add(edge_pair[2])
     return len(set_of_nodes)
 
@@ -57,11 +61,34 @@ def adjacency_matrix(*args):
     return adj_matrix
 
 
+def numpy_array(*args):
+    nodes_count = nodes_total(*args)
+    print(f'total nodes {nodes_count}')
+    num_matrix = np.zeros((5, 5))
+    return num_matrix
+
+
 if __name__ == "__main__":
     mal = adjacency_list((1, '->', 2), (1, '->', 3), (2, '->', 1), (2, '<-', 4), (3, '->', 1), (4, '<>', 3),
                          (4, '<>', 5), (2, '<>', 5))
+    print("Adjacency List")
     pprint(mal)
+
     my_matrix = adjacency_matrix((1, '->', 2), (1, '->', 3), (2, '->', 1), (2, '<-', 4), (3, '->', 1), (4, '<>', 3),
-                         (4, '<>', 5), (2, '<>', 5))
+                                 (4, '<>', 5), (2, '<>', 5))
+    print("\nAdjacency Matrix")
     pprint(my_matrix)
 
+    # al = AdjacencyLists()
+    # al.hello_name()
+
+    # am = AdjacencyMatrix((1, '->', 2), (1, '->', 3), (2, '->', 1), (2, '<-', 4), (3, '->', 1), (4, '<>', 3),
+    #                      (4, '<>', 5), (2, '<>', 5))
+
+    # my_matrix = AdjacencyMatrix((1, '->', 2), (1, '->', 3), (2, '->', 1), (2, '<-', 4), (3, '->', 1), (4, '<>', 3),
+    #                               (4, '<>', 5), (2, '<>', 5))
+    #
+    # my_matrix.display_matrix()
+    # num_array_matrix = numpy_array()
+    #
+    # print(num_array_matrix)
