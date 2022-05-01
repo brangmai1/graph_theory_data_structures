@@ -1,45 +1,30 @@
+from pprint import pprint
 
+class AdjacencyList:
+    def __init__(self, adj_list):
+        self.adj_list = adj_list
 
-class AdjacencyLists:
-
-    def __init__(self, args):
-        self.adj_list = dict()
-        for first, second in args:
-            if first not in adj_list:
-                
-
-
-            if edge_pair[1] == '->':
-                self.right_direction(adj_list, edge_pair)
-            elif edge_pair[1] == '<-':
-                self.left_direction(adj_list, edge_pair)
+    def add_edges(self, new_list):
+        for first, direction, second in new_list:
+            if direction == '->':
+                self.right_direction(first, second)
+            elif direction == '<-':
+                self.left_direction(first, second)
             else:
-                self.right_direction(adj_list, edge_pair)
-                self.left_direction(adj_list, edge_pair)
+                self.right_direction(first, second)
+                self.left_direction(first, second)
 
-
-    def right_direction(adj_list, pair):
-        node = pair[0]
-        if node in adj_list:
-            adj_list[node].append(pair[2])
+    def right_direction(self, first_vertex, second_vertex):
+        if first_vertex in self.adj_list:
+            self.adj_list[first_vertex].append(second_vertex)
         else:
-            adj_list[node] = [pair[2]]
+            self.adj_list[first_vertex] = [second_vertex]
 
-
-    def left_direction(adj_list, pair):
-        node = pair[2]
-        if node in adj_list:
-            adj_list[node].append(pair[0])
+    def left_direction(self, first_vertex, second_vertex):
+        if first_vertex in self.adj_list:
+            self.adj_list[first_vertex].append(second_vertex)
         else:
-            adj_list[node] = [pair[0]]
+            self.adj_list[first_vertex] = [second_vertex]
 
-
-if __name__ == "__main__":
-
-    adj_list = AdjacencyLists((1, 2), (1, 3), (2, 1), (2, 4), (3, 1), (4, 3),(4, 5), (2, 5))
-
-
-    my_matrix = adjacency_matrix((1, '->', 2), (1, '->', 3), (2, '->', 1), (2, '<-', 4), (3, '->', 1), (4, '<>', 3),
-                                 (4, '<>', 5), (2, '<>', 5))
-    print("\nAdjacency Matrix")
-    pprint(my_matrix)
+    def display_list(self):
+        pprint(self.adj_list)

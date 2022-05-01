@@ -1,7 +1,7 @@
 # Brang Mai
 from pprint import pprint
 import numpy as np
-#from adjacency_lists import AdjacencyLists
+from adjacency_lists import AdjacencyList
 from adjacency_matrix import AdjacencyMatrix
 
 
@@ -78,6 +78,11 @@ if __name__ == "__main__":
     print("\nAdjacency Matrix")
     print("_______________________")
     pprint(my_matrix)
+
+    adjacency_list_class = AdjacencyList(mal)
+    print("\nAdjacency Class List")
+    print("_______________________")
+    adjacency_list_class.display_list()
 
     adj_matrix_class = AdjacencyMatrix(my_matrix)
     print("\nAdjacency Class Matrix:")
