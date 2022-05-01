@@ -2,7 +2,7 @@
 from pprint import pprint
 import numpy as np
 #from adjacency_lists import AdjacencyLists
-#from adjacency_matrix import AdjacencyMatrix
+from adjacency_matrix import AdjacencyMatrix
 
 
 def adjacency_list(*args):
@@ -56,7 +56,6 @@ def adjacency_matrix(*args):
     adj_list = adjacency_list(*args)
     for node in adj_list.keys():
         for item in adj_list[node]:
-            # print(f'Node is {node}, item is {item}')
             adj_matrix[node][item] = 1
     return adj_matrix
 
@@ -77,18 +76,11 @@ if __name__ == "__main__":
     my_matrix = adjacency_matrix((1, '->', 2), (1, '->', 3), (2, '->', 1), (2, '<-', 4), (3, '->', 1), (4, '<>', 3),
                                  (4, '<>', 5), (2, '<>', 5))
     print("\nAdjacency Matrix")
+    print("_______________________")
     pprint(my_matrix)
 
-    # al = AdjacencyLists()
-    # al.hello_name()
+    adj_matrix_class = AdjacencyMatrix(my_matrix)
+    print("\nAdjacency Class Matrix:")
+    print("_______________________")
+    adj_matrix_class.display_matrix()
 
-    # am = AdjacencyMatrix((1, '->', 2), (1, '->', 3), (2, '->', 1), (2, '<-', 4), (3, '->', 1), (4, '<>', 3),
-    #                      (4, '<>', 5), (2, '<>', 5))
-
-    # my_matrix = AdjacencyMatrix((1, '->', 2), (1, '->', 3), (2, '->', 1), (2, '<-', 4), (3, '->', 1), (4, '<>', 3),
-    #                               (4, '<>', 5), (2, '<>', 5))
-    #
-    # my_matrix.display_matrix()
-    # num_array_matrix = numpy_array()
-    #
-    # print(num_array_matrix)
